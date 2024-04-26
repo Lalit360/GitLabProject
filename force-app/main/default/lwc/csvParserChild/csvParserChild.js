@@ -22,6 +22,9 @@ export default class CsvParserChild extends LightningElement {
         reader.readAsDataURL(file)
         this.read(file);
     }
+    thisMethod(){
+      console.log('THIS Is THE NEW PHASE');
+    }
 
     async read(file) {
         try {
