@@ -1,0 +1,42 @@
+<template>
+    <div class="slds-form-element slds-align_absolute-center">
+        <div class="slds-grid">
+            <div class="slds-col">
+                <div class="slds-m-around_medium">
+                    <lightning-input type="file" accept=".csv" label="Attachment"
+                        onchange={openfileUpload}></lightning-input>
+                </div>
+                <template if:true={fileData}>
+                    <p style="margin-left: 35px;">{fileData.filename}</p>
+                </template>
+            </div>
+            <div class="slds-col" style="margin-top: 42px;">
+                <lightning-button variant="brand" label="Clear" title="Submit" onclick={handleClear}
+                    class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </div>
+    </div>
+    <template if:true={isTableVisibleChild}>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered"
+            aria-label="Example default base table of Opportunities">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <template for:each={fileHeader} for:item="header" for:index="headIndex">
+                        <th class="" scope="col" key={header}>
+                            <div class="slds-truncate" title="Opportunity Name">{header}</div>
+                        </th>
+                    </template>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={fileLineData} for:item="rowData" for:index="rowDataIndex">
+                    <tr key={rowData}>
+                        <template for:each={rowData} for:item="row" for:index="rowIndex">
+                            <th key={row}>{row}</th>
+                        </template>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </template>
+</template>
