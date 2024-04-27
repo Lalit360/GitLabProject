@@ -10,6 +10,6 @@ export default class MamMaker extends LightningElement {
 
 
     connectedCallback(){
-        this.ty();
+       console.log('this is git hub');
     }
 }
